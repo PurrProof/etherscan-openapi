@@ -27,7 +27,9 @@
 
 There are a number of Etherscan API HTTP-clients available in different languages, each varying in completeness and update frequency. With the API specification, you can generate an API HTTP-client in a supported language using various generators. Here are a few examples of such generators:  
 
-* typescript: [Openapi-Typescript](https://github.com/openapi-ts/openapi-typescript), [Orval](https://github.com/anymaniax/orval)
+* typescript:
+  * [Openapi-Typescript](https://github.com/openapi-ts/openapi-typescript), see [example](tests/openapi-ts/integration/account.balance.test.ts)
+  * [Orval](https://github.com/anymaniax/orval)
 * multiple languages: [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator), [Swagger-Codegen](https://github.com/swagger-api/swagger-codegen), [Kiota](https://github.com/microsoft/kiota)
 
 ## Is the Etherscan API completely described in the specification?
@@ -159,5 +161,12 @@ According to the OA3.1 specification, [tags](https://spec.openapis.org/oas/lates
 
 ## For developers
 
+```
+pnpm install
+pnpm client
+pnpm test
+```
+
 Issues and pull requests are welcome.
+
 Use this at your own risk and responsibility. Please respect the [Terms of Service](https://etherscan.io/terms) of Etherscan.io.

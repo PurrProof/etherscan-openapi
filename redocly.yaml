@@ -5,4 +5,8 @@ apis:
       path-not-include-query: off
       tag-description: off
       operation-4xx-response: off
+    x-openapi-ts:
+      output: ./tests/openapi-ts/schema.d.ts
+    
+      
     
