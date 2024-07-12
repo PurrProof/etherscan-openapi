@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Etherscan API
   version: 1.0.0
-  description: Etherscan is the leading blockchain explorer, search, API and analytics platform for Ethereum, a decentralized smart contracts platform. Source attribution via a backlink or a mention that your app is "Powered by Etherscan.io APIs" is required except for personal/private usage.
+  description: Etherscan is the leading blockchain explorer, search, API and analytics platform for Ethereum, a decentralized smart contracts platform.
   license:
     name: UNLICENSED
     url: https://docs.etherscan.io/
@@ -29,7 +29,7 @@ tags:
 externalDocs:
   url: https://docs.etherscan.io/
 paths:
-  /?account.balance:
+  /?module=account&action=balance:
     get:
       operationId: get-ether-balance-for-a-single-address
       externalDocs:
@@ -39,8 +39,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.balance'
         - in: query
           name: address
           schema:
@@ -68,7 +66,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '40891626854930000000000'
-  /?account.balancemulti:
+  /?module=account&action=balancemulti:
     get:
       operationId: get-ether-balance-for-multiple-addresses-in-a-single-call
       externalDocs:
@@ -78,8 +76,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.balancemulti'
         - in: query
           name: address
           schema:
@@ -117,7 +113,7 @@ paths:
                     balance: '332567136222827062478'
                   - account: '0x198ef1ec325a96cc354c7266a038be8b5c558f67'
                     balance: '0'
-  /?account.txlist:
+  /?module=account&action=txlist:
     get:
       operationId: get-a-list-of-normal-transactions-by-address
       externalDocs:
@@ -127,8 +123,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.txlist'
         - in: query
           name: address
           schema:
@@ -220,7 +214,7 @@ paths:
                     confirmations: '122471'
                     methodId: '0xa9059cbb'
                     functionName: transfer(address _to, uint256 _value)
-  /?account.txlistinternal:
+  /?module=account&action=txlistinternal:
     get:
       operationId: get-a-list-of-internal-transactions-by-address
       externalDocs:
@@ -230,8 +224,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.txlistinternal'
         - in: query
           name: address
           schema:
@@ -311,7 +303,7 @@ paths:
                     traceId: '0'
                     isError: '0'
                     errCode: ''
-  /?account.txlistinternal.txhash:
+  /?module=account&action=txlistinternal&get-internal-transactions-by-transaction-hash:
     get:
       operationId: get-internal-transactions-by-transaction-hash
       externalDocs:
@@ -321,8 +313,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.txlistinternal'
         - in: query
           name: txhash
           schema:
@@ -356,7 +346,7 @@ paths:
                     gasUsed: '0'
                     isError: '0'
                     errCode: ''
-  /?account.txlistinternal.startblock.endblock.page.offset.sort:
+  /?module=account&action=txlistinternal&get-internal-transactions-by-block-range:
     get:
       operationId: get-internal-transactions-by-block-range
       externalDocs:
@@ -366,8 +356,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.txlistinternal'
         - in: query
           name: startblock
           schema:
@@ -441,7 +429,7 @@ paths:
                     traceId: '0'
                     isError: '0'
                     errCode: ''
-  /?account.tokentx:
+  /?module=account&action=tokentx:
     get:
       operationId: get-a-list-of-erc20-token-transfer-events-by-address
       externalDocs:
@@ -451,8 +439,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.tokentx'
         - in: query
           name: address
           schema:
@@ -548,7 +534,7 @@ paths:
                     cumulativeGasUsed: '6315818'
                     input: deprecated
                     confirmations: '7933584'
-  /?account.tokennfttx:
+  /?module=account&action=tokennfttx:
     get:
       operationId: get-a-list-of-erc721-token-transfer-events-by-address
       externalDocs:
@@ -558,8 +544,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.tokennfttx'
         - in: query
           name: address
           schema:
@@ -655,7 +639,7 @@ paths:
                     cumulativeGasUsed: '3359342'
                     input: deprecated
                     confirmations: '7990449'
-  /?account.token1155tx:
+  /?module=account&action=token1155tx:
     get:
       operationId: get-a-list-of-erc1155-token-transfer-events-by-address
       externalDocs:
@@ -665,8 +649,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.token1155tx'
         - in: query
           name: address
           schema:
@@ -781,7 +763,7 @@ paths:
                     tokenName: parallel
                     tokenSymbol: LL
                     confirmations: '852909'
-  /?account.getminedblocks:
+  /?module=account&action=getminedblocks:
     get:
       operationId: get-list-of-blocks-validated-by-address
       externalDocs:
@@ -791,8 +773,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.getminedblocks'
         - in: query
           name: address
           schema:
@@ -841,7 +821,7 @@ paths:
                   - blockNumber: '2687700'
                     timeStamp: '1480018852'
                     blockReward: '5003251945421042780'
-  /?account.txsBeaconWithdrawal:
+  /?module=account&action=txsBeaconWithdrawal:
     get:
       operationId: get-beacon-chain-withdrawals-by-address-and-block-range
       externalDocs:
@@ -851,8 +831,6 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.txsBeaconWithdrawal'
         - in: query
           name: address
           schema:
@@ -922,7 +900,7 @@ paths:
                     amount: '3244098967'
                     blockNumber: '17034877'
                     timestamp: '1681338599'
-  /?account.balancehistory:
+  /?module=account&action=balancehistory:
     get:
       operationId: get-historical-ether-balance-for-a-single-address-by-blockno
       externalDocs:
@@ -933,8 +911,6 @@ paths:
         - Accounts
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.balancehistory'
         - in: query
           name: address
           schema:
@@ -962,7 +938,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '610538078574759898951277'
-  /?contract.getabi:
+  /?module=contract&action=getabi:
     get:
       operationId: get-contract-abi-for-verified-contract-source-codes
       externalDocs:
@@ -972,8 +948,6 @@ paths:
       tags:
         - Contracts
       parameters:
-        - $ref: '#/components/parameters/module.contract'
-        - $ref: '#/components/parameters/action.getabi'
         - in: query
           name: address
           schema:
@@ -995,7 +969,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '[{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"proposals","outputs":[{"name":"recipient","type":"address"},{"name":"amount","type":"uint256"},{"name":"description","type":"string"},{"name":"votingDeadline","type":"uint256"},{"name":"open","type":"bool"},{"name":"proposalPassed","type":"bool"},{"name":"proposalHash","type":"bytes32"},{"name":"proposalDeposit","type":"uint256"},{"name":"newCurator","type":"bool"},{"name":"yea","type":"uint256"},{"name":"nay","type":"uint256"},{"name":"creator","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_amount","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"minTokensToCreate","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"rewardAccount","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":true,"inputs":[],"name":"daoCreator","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"divisor","outputs":[{"name":"divisor","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"extraBalance","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"_proposalID","type":"uint256"},{"name":"_transactionData","type":"bytes"}],"name":"executeProposal","outputs":[{"name":"_success","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"type":"function"},{"constant":false,"inputs":[],"name":"unblockMe","outputs":[{"name":"","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"totalRewardToken","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"actualBalance","outputs":[{"name":"_actualBalance","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"closingTime","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"allowedRecipients","outputs":[{"name":"","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferWithoutReward","outputs":[{"name":"success","type":"bool"}],"type":"function"},{"constant":false,"inputs":[],"name":"refund","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_amount","type":"uint256"},{"name":"_description","type":"string"},{"name":"_transactionData","type":"bytes"},{"name":"_debatingPeriod","type":"uint256"},{"name":"_newCurator","type":"bool"}],"name":"newProposal","outputs":[{"name":"_proposalID","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"DAOpaidOut","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"minQuorumDivisor","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_newContract","type":"address"}],"name":"newContract","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_allowed","type":"bool"}],"name":"changeAllowedRecipients","outputs":[{"name":"_success","type":"bool"}],"type":"function"},{"constant":false,"inputs":[],"name":"halveMinQuorum","outputs":[{"name":"_success","type":"bool"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"paidOut","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_proposalID","type":"uint256"},{"name":"_newCurator","type":"address"}],"name":"splitDAO","outputs":[{"name":"_success","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"DAOrewardAccount","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":true,"inputs":[],"name":"proposalDeposit","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"numberOfProposals","outputs":[{"name":"_numberOfProposals","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"lastTimeMinQuorumMet","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_toMembers","type":"bool"}],"name":"retrieveDAOReward","outputs":[{"name":"_success","type":"bool"}],"type":"function"},{"constant":false,"inputs":[],"name":"receiveEther","outputs":[{"name":"","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"isFueled","outputs":[{"name":"","type":"bool"}],"type":"function"},{"constant":false,"inputs":[{"name":"_tokenHolder","type":"address"}],"name":"createTokenProxy","outputs":[{"name":"success","type":"bool"}],"type":"function"},{"constant":true,"inputs":[{"name":"_proposalID","type":"uint256"}],"name":"getNewDAOAddress","outputs":[{"name":"_newDAO","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"_proposalID","type":"uint256"},{"name":"_supportsProposal","type":"bool"}],"name":"vote","outputs":[{"name":"_voteID","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[],"name":"getMyReward","outputs":[{"name":"_success","type":"bool"}],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"rewardToken","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFromWithoutReward","outputs":[{"name":"success","type":"bool"}],"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"type":"function"},{"constant":false,"inputs":[{"name":"_proposalDeposit","type":"uint256"}],"name":"changeProposalDeposit","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"blocked","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"curator","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":true,"inputs":[{"name":"_proposalID","type":"uint256"},{"name":"_recipient","type":"address"},{"name":"_amount","type":"uint256"},{"name":"_transactionData","type":"bytes"}],"name":"checkProposalCode","outputs":[{"name":"_codeChecksOut","type":"bool"}],"type":"function"},{"constant":true,"inputs":[],"name":"privateCreation","outputs":[{"name":"","type":"address"}],"type":"function"},{"inputs":[{"name":"_curator","type":"address"},{"name":"_daoCreator","type":"address"},{"name":"_proposalDeposit","type":"uint256"},{"name":"_minTokensToCreate","type":"uint256"},{"name":"_closingTime","type":"uint256"},{"name":"_privateCreation","type":"address"}],"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_amount","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"value","type":"uint256"}],"name":"FuelingToDate","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"CreatedToken","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Refund","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"proposalID","type":"uint256"},{"indexed":false,"name":"recipient","type":"address"},{"indexed":false,"name":"amount","type":"uint256"},{"indexed":false,"name":"newCurator","type":"bool"},{"indexed":false,"name":"description","type":"string"}],"name":"ProposalAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"proposalID","type":"uint256"},{"indexed":false,"name":"position","type":"bool"},{"indexed":true,"name":"voter","type":"address"}],"name":"Voted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"proposalID","type":"uint256"},{"indexed":false,"name":"result","type":"bool"},{"indexed":false,"name":"quorum","type":"uint256"}],"name":"ProposalTallied","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_newCurator","type":"address"}],"name":"NewCurator","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_recipient","type":"address"},{"indexed":false,"name":"_allowed","type":"bool"}],"name":"AllowedRecipientChanged","type":"event"}]'
-  /?contract.getsourcecode:
+  /?module=contract&action=getsourcecode:
     get:
       operationId: get-contract-source-code-for-verified-contract-source-codes
       externalDocs:
@@ -1005,8 +979,6 @@ paths:
       tags:
         - Contracts
       parameters:
-        - $ref: '#/components/parameters/module.contract'
-        - $ref: '#/components/parameters/action.getsourcecode'
         - in: query
           name: address
           schema:
@@ -2277,7 +2249,7 @@ paths:
                     Proxy: '0'
                     Implementation: ''
                     SwarmSource: ''
-  /?contract.getcontractcreation:
+  /?module=contract&action=getcontractcreation:
     get:
       operationId: get-contract-creator-and-creation-tx-hash
       externalDocs:
@@ -2287,8 +2259,6 @@ paths:
       tags:
         - Contracts
       parameters:
-        - $ref: '#/components/parameters/module.contract'
-        - $ref: '#/components/parameters/action.getcontractcreation'
         - in: query
           name: contractaddresses
           schema:
@@ -2329,7 +2299,7 @@ paths:
                   - contractAddress: '0xf5b969064b91869fbf676ecabccd1c5563f591d0'
                     contractCreator: '0x435a5760aa360cae8c246039abab7754e80a1af1'
                     txHash: '0x779cceffd0a5b4df6718674f7d88dda3edde9ff0a6fec271eb584f65a56997c6'
-  /?contract.verifysourcecode:
+  /?module=contract&action=verifysourcecode:
     post:
       operationId: verify-source-code
       externalDocs:
@@ -2338,9 +2308,7 @@ paths:
       description: 'Submits a contract source code to an Etherscan-like explorer for verification. 🌐 Tutorial : A full walk through of submitting multichain contract verification.📝 Note : This endpoint is limited to 100 verifications/day, regardless of API PRO tier.'
       tags:
         - Contracts
-      parameters:
-        - $ref: '#/components/parameters/module.contract'
-        - $ref: '#/components/parameters/action.verifysourcecode'
+      parameters: []
       responses:
         '200':
           description: Operation result.
@@ -2361,7 +2329,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/Post.contract.verifysourcecode'
-  /?contract.checkverifystatus:
+  /?module=contract&action=checkverifystatus:
     get:
       operationId: check-source-code-verification-status
       externalDocs:
@@ -2371,8 +2339,6 @@ paths:
       tags:
         - Contracts
       parameters:
-        - $ref: '#/components/parameters/module.contract'
-        - $ref: '#/components/parameters/action.checkverifystatus'
         - in: query
           name: guid
           schema:
@@ -2394,7 +2360,7 @@ paths:
                 status: '1'
                 message: OK
                 result: Pass - Verified
-  /?transaction.getstatus:
+  /?module=transaction&action=getstatus:
     get:
       operationId: check-contract-execution-status
       externalDocs:
@@ -2404,8 +2370,6 @@ paths:
       tags:
         - Transactions
       parameters:
-        - $ref: '#/components/parameters/module.transaction'
-        - $ref: '#/components/parameters/action.getstatus'
         - in: query
           name: txhash
           schema:
@@ -2429,7 +2393,7 @@ paths:
                 result:
                   isError: '1'
                   errDescription: Bad jump destination
-  /?transaction.gettxreceiptstatus:
+  /?module=transaction&action=gettxreceiptstatus:
     get:
       operationId: check-transaction-receipt-status
       externalDocs:
@@ -2439,8 +2403,6 @@ paths:
       tags:
         - Transactions
       parameters:
-        - $ref: '#/components/parameters/module.transaction'
-        - $ref: '#/components/parameters/action.gettxreceiptstatus'
         - in: query
           name: txhash
           schema:
@@ -2463,7 +2425,7 @@ paths:
                 message: OK
                 result:
                   status: '1'
-  /?block.getblockreward:
+  /?module=block&action=getblockreward:
     get:
       operationId: get-block-and-uncle-rewards-by-blockno
       externalDocs:
@@ -2473,8 +2435,6 @@ paths:
       tags:
         - Blocks
       parameters:
-        - $ref: '#/components/parameters/module.block'
-        - $ref: '#/components/parameters/action.getblockreward'
         - in: query
           name: blockno
           schema:
@@ -2508,7 +2468,7 @@ paths:
                       unclePosition: '1'
                       blockreward: '3750000000000000000'
                   uncleInclusionReward: '312500000000000000'
-  /?block.getblockcountdown:
+  /?module=block&action=getblockcountdown:
     get:
       operationId: get-estimated-block-countdown-time-by-blockno
       externalDocs:
@@ -2518,8 +2478,6 @@ paths:
       tags:
         - Blocks
       parameters:
-        - $ref: '#/components/parameters/module.block'
-        - $ref: '#/components/parameters/action.getblockcountdown'
         - in: query
           name: blockno
           schema:
@@ -2545,7 +2503,7 @@ paths:
                   CountdownBlock: '16701588'
                   RemainingBlock: '3986111'
                   EstimateTimeInSec: '52616680.2'
-  /?block.getblocknobytime:
+  /?module=block&action=getblocknobytime:
     get:
       operationId: get-block-number-by-timestamp
       externalDocs:
@@ -2555,8 +2513,6 @@ paths:
       tags:
         - Blocks
       parameters:
-        - $ref: '#/components/parameters/module.block'
-        - $ref: '#/components/parameters/action.getblocknobytime'
         - in: query
           name: timestamp
           schema:
@@ -2584,7 +2540,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '12712551'
-  /?stats.dailyavgblocksize:
+  /?module=stats&action=dailyavgblocksize:
     get:
       operationId: get-daily-average-block-size
       externalDocs:
@@ -2595,8 +2551,6 @@ paths:
         - Blocks
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyavgblocksize'
         - in: query
           name: startdate
           schema:
@@ -2636,7 +2590,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     blockSize_bytes: 25117
-  /?stats.dailyblkcount:
+  /?module=stats&action=dailyblkcount:
     get:
       operationId: get-daily-block-count-and-rewards
       externalDocs:
@@ -2647,8 +2601,6 @@ paths:
         - Blocks
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyblkcount'
         - in: query
           name: startdate
           schema:
@@ -2690,7 +2642,7 @@ paths:
                     unixTimeStamp: '1551312000'
                     blockCount: 4366
                     blockRewards_Eth: '12808.485512162356907132'
-  /?stats.dailyblockrewards:
+  /?module=stats&action=dailyblockrewards:
     get:
       operationId: get-daily-block-rewards
       externalDocs:
@@ -2701,8 +2653,6 @@ paths:
         - Blocks
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyblockrewards'
         - in: query
           name: startdate
           schema:
@@ -2742,7 +2692,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     blockRewards_Eth: '12954.84375'
-  /?stats.dailyavgblocktime:
+  /?module=stats&action=dailyavgblocktime:
     get:
       operationId: get-daily-average-time-for-a-block-to-be-included-in-the-ethereum-blockchain
       externalDocs:
@@ -2753,8 +2703,6 @@ paths:
         - Blocks
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyavgblocktime'
         - in: query
           name: startdate
           schema:
@@ -2794,7 +2742,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     blockTime_sec: '19.61'
-  /?stats.dailyuncleblkcount:
+  /?module=stats&action=dailyuncleblkcount:
     get:
       operationId: get-daily-uncle-block-count-and-rewards
       externalDocs:
@@ -2805,8 +2753,6 @@ paths:
         - Blocks
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyuncleblkcount'
         - in: query
           name: startdate
           schema:
@@ -2848,7 +2794,7 @@ paths:
                     unixTimeStamp: '1551312000'
                     uncleBlockCount: 288
                     uncleBlockRewards_Eth: '691.5'
-  /?logs.getLogs:
+  /?module=logs&action=getLogs:
     get:
       operationId: get-event-logs-by-address
       externalDocs:
@@ -2858,8 +2804,6 @@ paths:
       tags:
         - Logs
       parameters:
-        - $ref: '#/components/parameters/module.logs'
-        - $ref: '#/components/parameters/action.getLogs'
         - in: query
           name: address
           schema:
@@ -2931,7 +2875,7 @@ paths:
                     logIndex: '0x1'
                     transactionHash: '0x4ffd22d986913d33927a392fe4319bcd2b62f3afe1c15a2c59f77fc2cc4c20a9'
                     transactionIndex: 0x
-  /?logs.getLogs.fromBlock.toBlock.topic.topicOperator.page.offset:
+  /?module=logs&action=getLogs&get-event-logs-by-topics:
     get:
       operationId: get-event-logs-by-topics
       externalDocs:
@@ -2941,8 +2885,6 @@ paths:
       tags:
         - Logs
       parameters:
-        - $ref: '#/components/parameters/module.logs'
-        - $ref: '#/components/parameters/action.getLogs'
         - in: query
           name: fromBlock
           schema:
@@ -3022,7 +2964,7 @@ paths:
                     logIndex: '0x2'
                     transactionHash: '0x4ffd22d986913d33927a392fe4319bcd2b62f3afe1c15a2c59f77fc2cc4c20a9'
                     transactionIndex: 0x
-  /?logs.getLogs.fromBlock.toBlock.address.topic.topicOperator.page.offset:
+  /?module=logs&action=getLogs&get-event-logs-by-address-filtered-by-topics:
     get:
       operationId: get-event-logs-by-address-filtered-by-topics
       externalDocs:
@@ -3032,8 +2974,6 @@ paths:
       tags:
         - Logs
       parameters:
-        - $ref: '#/components/parameters/module.logs'
-        - $ref: '#/components/parameters/action.getLogs'
         - in: query
           name: fromBlock
           schema:
@@ -3119,7 +3059,7 @@ paths:
                     logIndex: '0x1d7'
                     transactionHash: '0x3a299413cf2c91e376e542efcf3fc308c562da79af6e992401217cc6208c7f74'
                     transactionIndex: '0x92'
-  /?proxy.eth_blockNumber:
+  /?module=proxy&action=eth_blockNumber:
     get:
       operationId: eth_blocknumber
       externalDocs:
@@ -3128,9 +3068,7 @@ paths:
       description: Returns the number of most recent block
       tags:
         - Geth/Parity Proxy
-      parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_blockNumber'
+      parameters: []
       responses:
         '200':
           description: Operation result.
@@ -3146,7 +3084,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 83
                 result: '0xc36b29'
-  /?proxy.eth_getBlockByNumber:
+  /?module=proxy&action=eth_getBlockByNumber:
     get:
       operationId: eth_getblockbynumber
       externalDocs:
@@ -3156,8 +3094,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getBlockByNumber'
         - in: query
           name: tag
           schema:
@@ -3215,7 +3151,7 @@ paths:
                   transactionsRoot: '0xaceb14fcf363e67d6cdcec0d7808091b764b4428f5fd7e25fb18d222898ef779'
                   uncles:
                     - '0x9e8622c7bf742bdeaf96c700c07151c1203edaf17a38ea8315b658c2e6d873cd'
-  /?proxy.eth_getUncleByBlockNumberAndIndex:
+  /?module=proxy&action=eth_getUncleByBlockNumberAndIndex:
     get:
       operationId: eth_getunclebyblocknumberandindex
       externalDocs:
@@ -3225,8 +3161,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getUncleByBlockNumberAndIndex'
         - in: query
           name: tag
           schema:
@@ -3273,7 +3207,7 @@ paths:
                   timestamp: '0x6110bd1a'
                   transactionsRoot: '0xa04a79e531db3ec373cb63e9ebfbc9c95525de6347958918a273675d4f221575'
                   uncles: []
-  /?proxy.eth_getBlockTransactionCountByNumber:
+  /?module=proxy&action=eth_getBlockTransactionCountByNumber:
     get:
       operationId: eth_getblocktransactioncountbynumber
       externalDocs:
@@ -3283,8 +3217,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getBlockTransactionCountByNumber'
         - in: query
           name: tag
           schema:
@@ -3306,7 +3238,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 1
                 result: '0x3'
-  /?proxy.eth_getTransactionByHash:
+  /?module=proxy&action=eth_getTransactionByHash:
     get:
       operationId: eth_gettransactionbyhash
       externalDocs:
@@ -3316,8 +3248,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getTransactionByHash'
         - in: query
           name: txhash
           schema:
@@ -3358,7 +3288,7 @@ paths:
                   v: '0x0'
                   r: '0xa681faea68ff81d191169010888bbbe90ec3eb903e31b0572cd34f13dae281b9'
                   s: '0x3f59b0fa5ce6cf38aff2cfeb68e7a503ceda2a72b4442c7e2844d63544383e3'
-  /?proxy.eth_getTransactionByBlockNumberAndIndex:
+  /?module=proxy&action=eth_getTransactionByBlockNumberAndIndex:
     get:
       operationId: eth_gettransactionbyblocknumberandindex
       externalDocs:
@@ -3368,8 +3298,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getTransactionByBlockNumberAndIndex'
         - in: query
           name: tag
           schema:
@@ -3420,7 +3348,7 @@ paths:
                   v: '0x1'
                   value: '0x2540be400'
                 id: 1
-  /?proxy.eth_getTransactionCount:
+  /?module=proxy&action=eth_getTransactionCount:
     get:
       operationId: eth_gettransactioncount
       externalDocs:
@@ -3430,8 +3358,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getTransactionCount'
         - in: query
           name: address
           schema:
@@ -3459,7 +3385,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 1
                 result: '0x44'
-  /?proxy.eth_sendRawTransaction:
+  /?module=proxy&action=eth_sendRawTransaction:
     get:
       operationId: eth_sendrawtransaction
       externalDocs:
@@ -3469,8 +3395,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_sendRawTransaction'
         - in: query
           name: hex
           schema:
@@ -3492,7 +3416,7 @@ paths:
                 id: 1
                 jsonrpc: '2.0'
                 result: '0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331a'
-  /?proxy.eth_getTransactionReceipt:
+  /?module=proxy&action=eth_getTransactionReceipt:
     get:
       operationId: eth_gettransactionreceipt
       externalDocs:
@@ -3502,8 +3426,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getTransactionReceipt'
         - in: query
           name: txhash
           schema:
@@ -3551,7 +3473,7 @@ paths:
                   transactionHash: '0xadb8aec59e80db99811ac4a0235efa3e45da32928bcff557998552250fa672eb'
                   transactionIndex: '0x122'
                   type: '0x2'
-  /?proxy.eth_call:
+  /?module=proxy&action=eth_call:
     get:
       operationId: eth_call
       externalDocs:
@@ -3561,8 +3483,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_call'
         - in: query
           name: to
           schema:
@@ -3596,7 +3516,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 1
                 result: '0x00000000000000000000000000000000000000000000000000601d8888141c00'
-  /?proxy.eth_getCode:
+  /?module=proxy&action=eth_getCode:
     get:
       operationId: eth_getcode
       externalDocs:
@@ -3606,8 +3526,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getCode'
         - in: query
           name: address
           schema:
@@ -3635,7 +3553,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 1
                 result: '0x3660008037602060003660003473273930d21e01ee25e4c219b63259d214872220a261235a5a03f21560015760206000f3'
-  /?proxy.eth_getStorageAt:
+  /?module=proxy&action=eth_getStorageAt:
     get:
       operationId: eth_getstorageat
       externalDocs:
@@ -3645,8 +3563,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_getStorageAt'
         - in: query
           name: address
           schema:
@@ -3680,7 +3596,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 1
                 result: '0x0000000000000000000000003d0768da09ce77d25e2d998e6a7b6ed4b9116c2d'
-  /?proxy.eth_gasPrice:
+  /?module=proxy&action=eth_gasPrice:
     get:
       operationId: eth_gasprice
       externalDocs:
@@ -3689,9 +3605,7 @@ paths:
       description: Returns the current price per gas in wei.
       tags:
         - Geth/Parity Proxy
-      parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_gasPrice'
+      parameters: []
       responses:
         '200':
           description: 'Operation result. 📖 Tip: The result is returned in wei.Easily convert Ethereum units using our unit converter.'
@@ -3707,7 +3621,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 73
                 result: '0x430e23400'
-  /?proxy.eth_estimateGas:
+  /?module=proxy&action=eth_estimateGas:
     get:
       operationId: eth_estimategas
       externalDocs:
@@ -3717,8 +3631,6 @@ paths:
       tags:
         - Geth/Parity Proxy
       parameters:
-        - $ref: '#/components/parameters/module.proxy'
-        - $ref: '#/components/parameters/action.eth_estimateGas'
         - in: query
           name: data
           schema:
@@ -3764,7 +3676,7 @@ paths:
                 jsonrpc: '2.0'
                 id: 1
                 result: '0x6556'
-  /?stats.tokensupply:
+  /?module=stats&action=tokensupply:
     get:
       operationId: get-erc20-token-totalsupply-by-contractaddress
       externalDocs:
@@ -3774,8 +3686,6 @@ paths:
       tags:
         - Tokens
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.tokensupply'
         - in: query
           name: contractaddress
           schema:
@@ -3797,7 +3707,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '21265524714464'
-  /?account.tokenbalance:
+  /?module=account&action=tokenbalance:
     get:
       operationId: get-erc20-token-account-balance-for-tokencontractaddress
       externalDocs:
@@ -3807,8 +3717,6 @@ paths:
       tags:
         - Tokens
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.tokenbalance'
         - in: query
           name: contractaddress
           schema:
@@ -3836,7 +3744,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '135499'
-  /?stats.tokensupplyhistory:
+  /?module=stats&action=tokensupplyhistory:
     get:
       operationId: get-historical-erc20-token-totalsupply-by-contractaddress-and-blockno
       externalDocs:
@@ -3847,8 +3755,6 @@ paths:
         - Tokens
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.tokensupplyhistory'
         - in: query
           name: contractaddress
           schema:
@@ -3876,7 +3782,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '21265524714464'
-  /?account.tokenbalancehistory:
+  /?module=account&action=tokenbalancehistory:
     get:
       operationId: get-historical-erc20-token-account-balance-for-tokencontractaddress-by-blockno
       externalDocs:
@@ -3887,8 +3793,6 @@ paths:
         - Tokens
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.tokenbalancehistory'
         - in: query
           name: contractaddress
           schema:
@@ -3922,7 +3826,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '135499'
-  /?token.tokenholderlist:
+  /?module=token&action=tokenholderlist:
     get:
       operationId: get-token-holder-list-by-contract-address
       externalDocs:
@@ -3932,8 +3836,6 @@ paths:
       tags:
         - Tokens
       parameters:
-        - $ref: '#/components/parameters/module.token'
-        - $ref: '#/components/parameters/action.tokenholderlist'
         - in: query
           name: contractaddress
           schema:
@@ -3977,7 +3879,7 @@ paths:
                     TokenHolderQuantity: '5'
                   - TokenHolderAddress: '0x0000000000003f5e74c1ba8a66b48e6f3d71ae82'
                     TokenHolderQuantity: '1'
-  /?token.tokeninfo:
+  /?module=token&action=tokeninfo:
     get:
       operationId: get-token-info-by-contractaddress
       externalDocs:
@@ -3988,8 +3890,6 @@ paths:
         - Tokens
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.token'
-        - $ref: '#/components/parameters/action.tokeninfo'
         - in: query
           name: contractaddress
           schema:
@@ -4034,7 +3934,7 @@ paths:
                     discord: https://discordapp.com/invite/DKGr2pW
                     whitepaper: ''
                     tokenPriceUSD: '0.000000000000000000'
-  /?account.addresstokenbalance:
+  /?module=account&action=addresstokenbalance:
     get:
       operationId: get-address-erc20-token-holding
       externalDocs:
@@ -4044,8 +3944,6 @@ paths:
       tags:
         - Tokens
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.addresstokenbalance'
         - in: query
           name: address
           schema:
@@ -4104,7 +4002,7 @@ paths:
                     TokenSymbol: PHCR
                     TokenQuantity: '4608452961264910063288'
                     TokenDivisor: '18'
-  /?account.addresstokennftbalance:
+  /?module=account&action=addresstokennftbalance:
     get:
       operationId: get-address-erc721-token-holding
       externalDocs:
@@ -4114,8 +4012,6 @@ paths:
       tags:
         - Tokens
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.addresstokennftbalance'
         - in: query
           name: address
           schema:
@@ -4169,7 +4065,7 @@ paths:
                     TokenName: Meebits
                     TokenSymbol: ⚇
                     TokenQuantity: '1'
-  /?account.addresstokennftinventory:
+  /?module=account&action=addresstokennftinventory:
     get:
       operationId: get-address-erc721-token-inventory-by-contract-address
       externalDocs:
@@ -4179,8 +4075,6 @@ paths:
       tags:
         - Tokens
       parameters:
-        - $ref: '#/components/parameters/module.account'
-        - $ref: '#/components/parameters/action.addresstokennftinventory'
         - in: query
           name: address
           schema:
@@ -4230,7 +4124,7 @@ paths:
                     TokenId: '8080'
                   - TokenAddress: '0xed5af388653567af2f388e6224dc7c4b3241c544'
                     TokenId: '4255'
-  /?gastracker.gasestimate:
+  /?module=gastracker&action=gasestimate:
     get:
       operationId: get-estimation-of-confirmation-time
       externalDocs:
@@ -4240,8 +4134,6 @@ paths:
       tags:
         - Gas Tracker
       parameters:
-        - $ref: '#/components/parameters/module.gastracker'
-        - $ref: '#/components/parameters/action.gasestimate'
         - in: query
           name: gasprice
           schema:
@@ -4263,7 +4155,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '9227'
-  /?gastracker.gasoracle:
+  /?module=gastracker&action=gasoracle:
     get:
       operationId: get-gas-oracle
       externalDocs:
@@ -4272,9 +4164,7 @@ paths:
       description: Returns the current Safe, Proposed and Fast gas prices. Post EIP-1559 🔥 changes :Safe/Proposed/Fast gas price recommendations are now modeled as Priority Fees.New field suggestBaseFee , the baseFee of the next pending blockNew field gasUsedRatio, to estimate how busy the network isLearn more about the gas changes in EIP-1559.
       tags:
         - Gas Tracker
-      parameters:
-        - $ref: '#/components/parameters/module.gastracker'
-        - $ref: '#/components/parameters/action.gasoracle'
+      parameters: []
       responses:
         '200':
           description: 'Operation result. ⛽ Note: The gas prices are returned in Gwei.'
@@ -4296,7 +4186,7 @@ paths:
                   FastGasPrice: '24'
                   suggestBaseFee: '19.230609716'
                   gasUsedRatio: 0.370119078777807,0.8954731,0.550911766666667,0.212457033333333,0.552463633333333
-  /?stats.dailyavggaslimit:
+  /?module=stats&action=dailyavggaslimit:
     get:
       operationId: get-daily-average-gas-limit
       externalDocs:
@@ -4307,8 +4197,6 @@ paths:
         - Gas Tracker
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyavggaslimit'
         - in: query
           name: startdate
           schema:
@@ -4351,7 +4239,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     gasLimit: '8001137'
-  /?stats.dailygasused:
+  /?module=stats&action=dailygasused:
     get:
       operationId: get-ethereum-daily-total-gas-used
       externalDocs:
@@ -4362,8 +4250,6 @@ paths:
         - Gas Tracker
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailygasused'
         - in: query
           name: startdate
           schema:
@@ -4406,7 +4292,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     gasUsed: '33081119561'
-  /?stats.dailyavggasprice:
+  /?module=stats&action=dailyavggasprice:
     get:
       operationId: get-daily-average-gas-price
       externalDocs:
@@ -4417,8 +4303,6 @@ paths:
         - Gas Tracker
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyavggasprice'
         - in: query
           name: startdate
           schema:
@@ -4467,7 +4351,7 @@ paths:
                     maxGasPrice_Wei: '237222222222257'
                     minGasPrice_Wei: '100000000'
                     avgGasPrice_Wei: '18834674068'
-  /?stats.ethsupply:
+  /?module=stats&action=ethsupply:
     get:
       operationId: get-total-supply-of-ether
       externalDocs:
@@ -4476,9 +4360,7 @@ paths:
       description: Returns the current amount of Ether in circulation excluding ETH2 Staking rewards and EIP1559 burnt fees.
       tags:
         - Stats
-      parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.ethsupply'
+      parameters: []
       responses:
         '200':
           description: 'Operation result. 📖 Tip : Easily convert Ethereum units using our unit converter.'
@@ -4494,7 +4376,7 @@ paths:
                 status: '1'
                 message: OK
                 result: '116487067186500000000000000'
-  /?stats.ethsupply2:
+  /?module=stats&action=ethsupply2:
     get:
       operationId: get-total-supply-of-ether-2
       externalDocs:
@@ -4503,9 +4385,7 @@ paths:
       description: Returns the current amount of Ether in circulation, ETH2 Staking rewards, EIP1559 burnt fees, and total withdrawn ETH from the beacon chain.
       tags:
         - Stats
-      parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.ethsupply2'
+      parameters: []
       responses:
         '200':
           description: 'Operation result. 📝 Note: The EthSupply is calculated before adding ETH minted as Eth2Staking rewards and subtracting BurntFees from EIP-1559. For more information, check out our Ether Total Supply Dashboard.'
@@ -4525,7 +4405,7 @@ paths:
                   Eth2Staking: '1157529105115885000000000'
                   BurntFees: '3102505506455601519229842'
                   WithdrawnTotal: '1170200333006131000000000'
-  /?stats.ethprice:
+  /?module=stats&action=ethprice:
     get:
       operationId: get-ether-last-price
       externalDocs:
@@ -4534,9 +4414,7 @@ paths:
       description: Returns the latest price of 1 ETH.
       tags:
         - Stats
-      parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.ethprice'
+      parameters: []
       responses:
         '200':
           description: 'Operation result. ⏳ Tip : The timestamps are represented in Unix timestamp.'
@@ -4556,7 +4434,7 @@ paths:
                   ethbtc_timestamp: '1624961308'
                   ethusd: '2149.18'
                   ethusd_timestamp: '1624961308'
-  /?stats.chainsize:
+  /?module=stats&action=chainsize:
     get:
       operationId: get-ethereum-nodes-size
       externalDocs:
@@ -4566,8 +4444,6 @@ paths:
       tags:
         - Stats
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.chainsize'
         - in: query
           name: startdate
           schema:
@@ -4623,7 +4499,7 @@ paths:
                     chainSize: '197073145113'
                     clientType: Geth
                     syncMode: Default
-  /?stats.nodecount:
+  /?module=stats&action=nodecount:
     get:
       operationId: get-total-nodes-count
       externalDocs:
@@ -4632,9 +4508,7 @@ paths:
       description: Returns the total number of discoverable Ethereum nodes.
       tags:
         - Stats
-      parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.nodecount'
+      parameters: []
       responses:
         '200':
           description: Operation result.
@@ -4652,7 +4526,7 @@ paths:
                 result:
                   UTCDate: '2021-06-29'
                   TotalNodeCount: '6413'
-  /?stats.dailytxnfee:
+  /?module=stats&action=dailytxnfee:
     get:
       operationId: get-daily-network-transaction-fee
       externalDocs:
@@ -4662,9 +4536,7 @@ paths:
       tags:
         - Stats
         - API PRO Endpoints
-      parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailytxnfee'
+      parameters: []
       responses:
         '200':
           description: Operation result.
@@ -4686,7 +4558,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     transactionFee_Eth: '545.141762162356907132'
-  /?stats.dailynewaddress:
+  /?module=stats&action=dailynewaddress:
     get:
       operationId: get-daily-new-address-count
       externalDocs:
@@ -4697,8 +4569,6 @@ paths:
         - Stats
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailynewaddress'
         - in: query
           name: startdate
           schema:
@@ -4738,7 +4608,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     newAddressCount: 53117
-  /?stats.dailynetutilization:
+  /?module=stats&action=dailynetutilization:
     get:
       operationId: get-daily-network-utilization
       externalDocs:
@@ -4749,8 +4619,6 @@ paths:
         - Stats
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailynetutilization'
         - in: query
           name: startdate
           schema:
@@ -4790,7 +4658,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     networkUtilization: '0.9472'
-  /?stats.dailyavghashrate:
+  /?module=stats&action=dailyavghashrate:
     get:
       operationId: get-daily-average-network-hash-rate
       externalDocs:
@@ -4801,8 +4669,6 @@ paths:
         - Stats
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyavghashrate'
         - in: query
           name: startdate
           schema:
@@ -4842,7 +4708,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     networkHashRate: '157689.3983'
-  /?stats.dailytx:
+  /?module=stats&action=dailytx:
     get:
       operationId: get-daily-transaction-count
       externalDocs:
@@ -4853,8 +4719,6 @@ paths:
         - Stats
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailytx'
         - in: query
           name: startdate
           schema:
@@ -4894,7 +4758,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     transactionCount: 541458
-  /?stats.dailyavgnetdifficulty:
+  /?module=stats&action=dailyavgnetdifficulty:
     get:
       operationId: get-daily-average-network-difficulty
       externalDocs:
@@ -4905,8 +4769,6 @@ paths:
         - Stats
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.dailyavgnetdifficulty'
         - in: query
           name: startdate
           schema:
@@ -4946,7 +4808,7 @@ paths:
                   - UTCDate: '2019-02-28'
                     unixTimeStamp: '1551312000'
                     networkDifficulty: 2,927.453
-  /?stats.ethdailymarketcap:
+  /?module=stats&action=ethdailymarketcap:
     get:
       operationId: get-ether-historical-daily-market-cap
       externalDocs:
@@ -4957,8 +4819,6 @@ paths:
         - Stats
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.ethdailymarketcap'
         - in: query
           name: startdate
           schema:
@@ -5002,7 +4862,7 @@ paths:
                     supply: '105048576.406250'
                     marketCap: '14317.0704784078125'
                     price: '136.29'
-  /?stats.ethdailyprice:
+  /?module=stats&action=ethdailyprice:
     get:
       operationId: get-ether-historical-price
       externalDocs:
@@ -5013,8 +4873,6 @@ paths:
         - Stats
         - API PRO Endpoints
       parameters:
-        - $ref: '#/components/parameters/module.stats'
-        - $ref: '#/components/parameters/action.ethdailyprice'
         - in: query
           name: startdate
           schema:
@@ -5971,612 +5829,3 @@ components:
       type: apiKey
       in: query
       name: apikey
-  parameters:
-    module.account:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - account
-      required: true
-    action.balance:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - balance
-      required: true
-    action.balancemulti:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - balancemulti
-      required: true
-    action.txlist:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - txlist
-      required: true
-    action.txlistinternal:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - txlistinternal
-      required: true
-    action.tokentx:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokentx
-      required: true
-    action.tokennfttx:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokennfttx
-      required: true
-    action.token1155tx:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - token1155tx
-      required: true
-    action.getminedblocks:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getminedblocks
-      required: true
-    action.txsBeaconWithdrawal:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - txsBeaconWithdrawal
-      required: true
-    action.balancehistory:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - balancehistory
-      required: true
-    module.contract:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - contract
-      required: true
-    action.getabi:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getabi
-      required: true
-    action.getsourcecode:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getsourcecode
-      required: true
-    action.getcontractcreation:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getcontractcreation
-      required: true
-    action.verifysourcecode:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - verifysourcecode
-      required: true
-    action.checkverifystatus:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - checkverifystatus
-      required: true
-    module.transaction:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - transaction
-      required: true
-    action.getstatus:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getstatus
-      required: true
-    action.gettxreceiptstatus:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - gettxreceiptstatus
-      required: true
-    module.block:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - block
-      required: true
-    action.getblockreward:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getblockreward
-      required: true
-    action.getblockcountdown:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getblockcountdown
-      required: true
-    action.getblocknobytime:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getblocknobytime
-      required: true
-    module.stats:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - stats
-      required: true
-    action.dailyavgblocksize:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyavgblocksize
-      required: true
-    action.dailyblkcount:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyblkcount
-      required: true
-    action.dailyblockrewards:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyblockrewards
-      required: true
-    action.dailyavgblocktime:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyavgblocktime
-      required: true
-    action.dailyuncleblkcount:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyuncleblkcount
-      required: true
-    module.logs:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - logs
-      required: true
-    action.getLogs:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - getLogs
-      required: true
-    module.proxy:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - proxy
-      required: true
-    action.eth_blockNumber:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_blockNumber
-      required: true
-    action.eth_getBlockByNumber:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getBlockByNumber
-      required: true
-    action.eth_getUncleByBlockNumberAndIndex:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getUncleByBlockNumberAndIndex
-      required: true
-    action.eth_getBlockTransactionCountByNumber:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getBlockTransactionCountByNumber
-      required: true
-    action.eth_getTransactionByHash:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getTransactionByHash
-      required: true
-    action.eth_getTransactionByBlockNumberAndIndex:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getTransactionByBlockNumberAndIndex
-      required: true
-    action.eth_getTransactionCount:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getTransactionCount
-      required: true
-    action.eth_sendRawTransaction:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_sendRawTransaction
-      required: true
-    action.eth_getTransactionReceipt:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getTransactionReceipt
-      required: true
-    action.eth_call:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_call
-      required: true
-    action.eth_getCode:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getCode
-      required: true
-    action.eth_getStorageAt:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_getStorageAt
-      required: true
-    action.eth_gasPrice:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_gasPrice
-      required: true
-    action.eth_estimateGas:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - eth_estimateGas
-      required: true
-    action.tokensupply:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokensupply
-      required: true
-    action.tokenbalance:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokenbalance
-      required: true
-    action.tokensupplyhistory:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokensupplyhistory
-      required: true
-    action.tokenbalancehistory:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokenbalancehistory
-      required: true
-    module.token:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - token
-      required: true
-    action.tokenholderlist:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokenholderlist
-      required: true
-    action.tokeninfo:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - tokeninfo
-      required: true
-    action.addresstokenbalance:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - addresstokenbalance
-      required: true
-    action.addresstokennftbalance:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - addresstokennftbalance
-      required: true
-    action.addresstokennftinventory:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - addresstokennftinventory
-      required: true
-    module.gastracker:
-      in: query
-      name: module
-      schema:
-        type: string
-        enum:
-          - gastracker
-      required: true
-    action.gasestimate:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - gasestimate
-      required: true
-    action.gasoracle:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - gasoracle
-      required: true
-    action.dailyavggaslimit:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyavggaslimit
-      required: true
-    action.dailygasused:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailygasused
-      required: true
-    action.dailyavggasprice:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyavggasprice
-      required: true
-    action.ethsupply:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - ethsupply
-      required: true
-    action.ethsupply2:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - ethsupply2
-      required: true
-    action.ethprice:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - ethprice
-      required: true
-    action.chainsize:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - chainsize
-      required: true
-    action.nodecount:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - nodecount
-      required: true
-    action.dailytxnfee:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailytxnfee
-      required: true
-    action.dailynewaddress:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailynewaddress
-      required: true
-    action.dailynetutilization:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailynetutilization
-      required: true
-    action.dailyavghashrate:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyavghashrate
-      required: true
-    action.dailytx:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailytx
-      required: true
-    action.dailyavgnetdifficulty:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - dailyavgnetdifficulty
-      required: true
-    action.ethdailymarketcap:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - ethdailymarketcap
-      required: true
-    action.ethdailyprice:
-      in: query
-      name: action
-      schema:
-        type: string
-        enum:
-          - ethdailyprice
-      required: true
